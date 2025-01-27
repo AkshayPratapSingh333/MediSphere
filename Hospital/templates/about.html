@@ -1,0 +1,27 @@
+{% extends "navigationbar.html" %}
+
+{% load static %}
+
+{% block body %}
+<div class="about-container">
+    <h2 class="text-center-about">About Medisphere</h2>
+    <div class="about-content">
+        <p>
+            Welcome to <strong>Medisphere</strong>, the leading hospital management software designed to streamline and enhance healthcare administration. Our software integrates modern technology with healthcare needs, offering an all-in-one solution for managing patient records, appointments, billing, and much more.
+        </p>
+        <p>
+            At Medisphere, we are committed to revolutionizing healthcare management by providing tools that allow healthcare professionals to focus on what they do best—caring for patients. With our intuitive user interface, robust security features, and scalable architecture, Medisphere is the perfect solution for hospitals of any size.
+        </p>
+        <p>
+            Our mission is to empower hospitals and healthcare providers with technology that simplifies daily operations, improves patient care, and optimizes resources. We continuously innovate and adapt to the ever-changing needs of the healthcare industry, ensuring that our clients are always equipped with the latest advancements.
+        </p>
+        <p>
+            Join the thousands of healthcare professionals who trust Medisphere to help them deliver better care, improve operational efficiency, and achieve their goals.
+        </p>
+    </div>
+
+    <div class="about-image">
+        <img src="{% static 'images\MedisphereSharpBgRemCrop.png' %}" alt="Medisphere Hospital Management Software">
+    </div>
+</div>
+{% endblock %}

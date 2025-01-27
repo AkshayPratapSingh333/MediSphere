@@ -1,0 +1,55 @@
+{% extends "navigationbar.html" %}
+
+{% load static %}
+
+{% block body %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/add_doctor.css' %}">
+</head>
+
+<div class="container-add_doctor" style="margin-top: 50px">
+    <h2 class="text-center">Record Appointmnet</h2>
+    <br>
+    <form method="post">
+        {% csrf_token %}   
+        <label>Doctor Name</label>
+        <select name="doctor" class="form-control">
+            {% for i in doctor %}
+            <option value="{{i.name}}">{{i.name}} [{{i.id}}]</option>
+            {% endfor %}
+        </select>
+
+        <br>
+
+        <label>Patient Name</label>
+        <select name="patient" class="form-control">
+            {% for i in patient %}
+            <option value="{{i.name}}">{{i.name}} [{{i.id}}]</option>
+            {% endfor %}
+        </select>
+        <br>
+
+        <label>Date</label>
+        <input type="date" class="form-control" name="date" placeholder="Enter Date Of Appointmnet" required>
+
+        <label>Time</label>
+        <input type="time" class="form-control" name="time" placeholder="Enter Time Of Appointmnet" required>
+        <br>
+        <input type="submit" value="Submit" class="btn btn-primary form-control">
+    </form>
+</div>
+
+{% if error == "no" %}
+<script>
+    alert("Record Added Successfully");
+    window.location = "{% url 'view_appointment' %}";
+</script>
+{% endif %}
+
+{% if error == "yes" %}
+<script>
+    alert("Invalid, Try Again");
+</script>
+{% endif %}
+
+{% endblock %}

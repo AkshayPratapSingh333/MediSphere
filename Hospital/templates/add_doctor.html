@@ -1,0 +1,68 @@
+{% extends "navigationbar.html" %}
+
+{% load static %}
+
+{% block body %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/add_doctor.css' %}">
+</head>
+
+<div class="container-add_doctor" style="margin-top: 50px">
+    <h2 class="text-center">Record Doctor</h2>
+    <br>
+    <form method="post">
+        {% csrf_token %}   
+        <label>Doctor Name</label>
+        <input type="text" class="form-control" name="names" placeholder="Enter Doctor Name" required>
+
+        <label>Department</label>
+        <select class="form-control" name="department" required>
+            <option value="">Select Department</option>
+            <option value="Neurology">Neurology</option>
+            <option value="Cardiology">Cardiology</option>
+            <option value="Orthopedics">Orthopedics</option>
+            <option value="Pediatrics">Pediatrics</option>
+            <option value="Obstetrics and Gynecology (OB/GYN)">Obstetrics and Gynecology (OB/GYN)</option>
+            <option value="General Surgery">General Surgery</option>
+            <option value="Oncology">Oncology</option>
+            <option value="Dermatology">Dermatology</option>
+            <option value="Gastroenterology">Gastroenterology</option>
+            <option value="Pulmonology">Pulmonology</option>
+            <option value="Endocrinology">Endocrinology</option>
+            <option value="Nephrology">Nephrology</option>
+            <option value="Urology">Urology</option>
+            <option value="Ophthalmology">Ophthalmology</option>
+            <option value="Otolaryngology (ENT)">Otolaryngology (ENT)</option>
+            <option value="Radiology">Radiology</option>
+            <option value="Anesthesiology">Anesthesiology</option>
+            <option value="Emergency Medicine">Emergency Medicine</option>
+            <option value="Rheumatology">Rheumatology</option>
+            <option value="Psychiatry">Psychiatry</option>
+            <option value="Infectious Diseases">Infectious Diseases</option>
+            <option value="Hematology">Hematology</option>
+            <option value="Pathology">Pathology</option>
+            <option value="Physical Medicine and Rehabilitation (PM&R)">Physical Medicine and Rehabilitation (PM&R)</option>
+            <option value="Geriatrics">Geriatrics</option>
+        </select>
+
+        <label>Contact</label>
+        <input type="text" class="form-control" name="contact" placeholder="Enter Mobile Number" required>
+        <br>
+        <input type="submit" value="Submit" class="btn btn-primary form-control">
+    </form>
+</div>
+
+{% if error == "no" %}
+<script>
+    alert("Record Added Successfully");
+    window.location = "{% url 'view_doctor' %}";
+</script>
+{% endif %}
+
+{% if error == "yes" %}
+<script>
+    alert("Invalid, Try Again");
+</script>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends "navigationbar.html" %}
+
+{% load static %}
+
+{% block body %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/add_patient.css' %}">
+</head>
+
+<div class="container-add_patient" style="margin-top: 50px">
+    <h2 class="text-center">Record Patient</h2>
+    <br>
+    <form method="post" action="{% url 'add_patient' %}">
+        {% csrf_token %}
+        
+        <label>Patient's Name</label>
+        <input type="text" class="form-control" name="name" placeholder="Enter Patient Name" required>
+
+        <label>Gender</label>
+        <input type="radio" name="gender" value="Male" required> Male
+        <input type="radio" name="gender" value="Female" required> Female
+        <br>
+
+        <label>Age</label>
+        <input type="number" class="form-control" name="age" placeholder="Enter Age of Patient" required>
+
+        <label>Reason</label>
+        <textarea class="form-control" name="reason" placeholder="Enter Patient's Reason" required></textarea>
+
+        <label>Contact</label>
+        <input type="tel" class="form-control" name="mobile" placeholder="Enter Mobile Number" pattern="[0-9]{10}" required>
+
+        <label>Admission</label>
+        <input type="date" class="form-control" name="admission" placeholder="Date of Admission" required>
+
+        <label>Discharge</label>
+        <input type="date" class="form-control" name="discharge" placeholder="Date of Discharge" required>
+
+        <label>Doctor's Name</label>
+        <input type="text" class="form-control" name="docname" placeholder="Enter Doctor's Name" required>
+
+        <label>Prescription</label>
+        <textarea class="form-control" name="prescription" placeholder="Enter Prescription by Doctor" required></textarea>
+
+        <label>Bill</label>
+        <input type="number" class="form-control" name="bill" placeholder="Enter Total Amount" step="0.01" required>
+
+        <br>
+        <input type="submit" value="Submit" class="btn btn-primary form-control">
+    </form>
+</div>
+
+{% if error == "no" %}
+<script>
+    alert("Record Added Successfully");
+    window.location = "{% url 'view_patient' %}";
+</script>
+{% endif %}
+
+{% if error == "yes" %}
+<script>
+    alert("Invalid, Try Again");
+</script>
+{% endif %}
+
+{% endblock %}

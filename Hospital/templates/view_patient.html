@@ -1,0 +1,56 @@
+{% extends "navigationbar.html" %}
+
+{% load static %}
+
+{% block body %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/view_patient.css' %}">
+</head>
+
+<div class="container-view_patient" style="margin-top: 50px;">
+    <h2 class="text-center">Patient Dashboard</h2>
+<br>
+<table class="table table-hover" id="example"  style="width:100%">
+    <thead>
+        <tr>
+            <th>Patient ID</th>
+            <th>Patient Name</th>
+            <th>Gender</th>
+            <th>Age</th>
+            <th>Reason</th>
+            <th>Contact</th>
+            <th>Admission</th>
+            <th>Discharge</th>
+            <th>Doctor's Name</th>
+            <th>Prescription</th>
+            <th>Bill</th>
+            <th>Delete</th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+    {% for i in pat %}
+    <tr>
+        <td>{{i.id}}</td>
+        <td>{{i.name}}</td>
+        <td>{{i.gender}}</td>
+        <td>{{i.age}}</td>
+        <td>{{i.reason}}</td>
+        <td>{{i.mobile}}</td>
+        <td>{{i.admission}}</td>
+        <td>{{i.discharge}}</td>
+        <td>{{i.docname }}</td>
+        <td>{{i.prescription}}</td>
+        <td>{{i.bill }}</td>
+        <td><a href=" {% url 'delete_patient' i.id %}" onclick="return confirm('Delete Record ? ')"   class="btn btn-danger">Delete</a></td>
+    </tr>
+    {% endfor %}
+
+    </tbody>
+</table>    
+</div>
+
+
+
+{% endblock %}

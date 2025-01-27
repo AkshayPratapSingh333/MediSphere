@@ -1,0 +1,44 @@
+{% extends "navigationbar.html" %}
+
+{% load static %}
+
+{% block body %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/view_patient.css' %}">
+</head>
+
+<div class="container-view_patient" style="margin-top: 50px;">
+    <h2 class="text-center"> Dashboard</h2>
+<br>
+<table class="table table-hover" id="example"  style="width:100%">
+    <thead>
+        <tr>
+           
+            <th>Doctor_Name</th>
+            <th>Patient_Name</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Delete</th>
+
+        </tr>
+    </thead>
+    <tbody>
+    {% for i in app %}
+    <tr>
+
+        <td>{{i.doctor}}</td>
+        <td>{{i.patient}}</td>
+        <td>{{i.date1}}</td>
+        <td>{{i.time1}}</td>
+
+        <td><a href=" {% url 'delete_appointment' i.id %}" onclick="return confirm('Delete Record ? ')"   class="btn btn-danger">Delete</a></td>
+    </tr>   
+    {% endfor %}
+
+    </tbody>
+</table>    
+</div>
+
+
+
+{% endblock %}
